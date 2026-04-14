@@ -1,0 +1,11 @@
+# Python  default temporary files noted in internet
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller / Build outputs
+build/
+dist/
+*.spec
+
+gesture_memory.pkl

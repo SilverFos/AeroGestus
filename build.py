@@ -16,7 +16,7 @@ import shutil
 import importlib.util
 
 
-# ── Locate packages we need to bundle manually ──────────────────
+# ── Locate packages ──────────────────
 
 def pkg_path(name):
     spec = importlib.util.find_spec(name)
@@ -45,13 +45,13 @@ else:
 if os.path.exists("gesture_memory.pkl"):
     data_files.append(f"gesture_memory.pkl{sep}.")
 
-# 3. App icon (optional)
+# 3. App icon if/when made
 for icon_name in ("icon.ico", "icon.png"):
     if os.path.exists(icon_name):
         data_files.append(f"{icon_name}{sep}.")
         break
 
-# 4. MediaPipe data files (models it loads internally)
+# 4. MediaPipe data files - important
 try:
     mp_path = pkg_path("mediapipe")
     data_files.append(f"{mp_path}{sep}mediapipe")
@@ -59,7 +59,7 @@ try:
 except RuntimeError as e:
     print(f"WARNING: {e}")
 
-# 5. CustomTkinter themes / assets
+# 5. CustomTkinter
 try:
     ctk_path = pkg_path("customtkinter")
     data_files.append(f"{ctk_path}{sep}customtkinter")
@@ -67,7 +67,7 @@ try:
 except RuntimeError as e:
     print(f"WARNING: {e}")
 
-# 6. CLIP model assets
+# 6. CLIP model
 try:
     clip_path = pkg_path("clip")
     data_files.append(f"{clip_path}{sep}clip")
@@ -75,8 +75,6 @@ try:
 except RuntimeError as e:
     print(f"WARNING: {e}")
 
-
-# ── Hidden imports PyInstaller misses ────────────────────────────
 hidden_imports = [
     "clip",
     "mediapipe",
@@ -95,7 +93,6 @@ hidden_imports = [
 ]
 
 
-# ── Icon arg ─────────────────────────────────────────────────────
 icon_arg = []
 for icon_name in ("icon.ico", "icon.png"):
     if os.path.exists(icon_name):
@@ -103,7 +100,7 @@ for icon_name in ("icon.ico", "icon.png"):
         break
 
 
-# ── Build command ────────────────────────────────────────────────
+# ── Build command ───
 cmd = [
     sys.executable, "-m", "PyInstaller",
     "--noconfirm",
