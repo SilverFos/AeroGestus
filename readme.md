@@ -7,7 +7,7 @@ _Will add further control functionalities on future dates._
 1. Install Python 3.13 or higher.
 2. Install dependencies:
 > pip install torch torchvision mediapipe opencv-python pillow clip-by-openai customtkinter
-3. Ensure gesture_recognizer.task is in the root directory. Can be downloaded from <https://ai.google.dev/edge/mediapipe/solutions/vision/gesture_recognizer> if necessary.
+3. Ensure gesture_recognizer.task is in the root directory. Can be downloaded from [Google Dev](https://ai.google.dev/edge/mediapipe/solutions/vision/gesture_recognizer) if necessary.
 4. Run 
 > python app.py
 
